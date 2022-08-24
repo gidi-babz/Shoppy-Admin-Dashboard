@@ -147,12 +147,12 @@ const Ecommerce = () => {
 						</div>
 					</div>
 				</div>
-				<div>
+				<div className="px-6 md:px-0">
 					<div
-						className=" rounded-2xl md:w-400 p-4 m-3"
+						className=" rounded-2xl w-screen md:w-400 p-1 md:p-4 m-5 md:m-3"
 						style={{ backgroundColor: currentColor }}
 					>
-						<div className="flex justify-between items-center ">
+						<div className="flex justify-between items-center mx-3 md:mx-0">
 							<p className="font-semibold text-white text-2xl">Earnings</p>
 
 							<div>
@@ -164,21 +164,19 @@ const Ecommerce = () => {
 						</div>
 
 						<div className="mt-4">
-							{screenSize > 375 && (
-								<SparkLine
-									currentColor={currentColor}
-									id="column-sparkLine"
-									height="100px"
-									type="Column"
-									data={SparklineAreaData}
-									width="320"
-									color="rgb(242, 252, 253)"
-								/>
-							)}
+							<SparkLine
+								currentColor={currentColor}
+								id="column-sparkLine"
+								height="100px"
+								type="Column"
+								data={SparklineAreaData}
+								width="320"
+								color="rgb(242, 252, 253)"
+							/>
 						</div>
 					</div>
 
-					<div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl md:w-400 p-8 m-3 flex justify-center items-center gap-10">
+					<div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl w-11/12 md:w-400 p-8 m-3 md:flex md:justify-center md:items-center gap-10">
 						<div>
 							<p className="text-2xl font-semibold ">$43,246</p>
 							<p className="text-gray-400">Yearly sales</p>
@@ -189,7 +187,7 @@ const Ecommerce = () => {
 								id="pie-chart"
 								data={ecomPieChartData}
 								legendVisiblity={false}
-								height="170px"
+								height="160px"
 							/>
 						</div>
 					</div>

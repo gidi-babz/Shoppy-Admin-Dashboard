@@ -55,6 +55,7 @@ const Navbar = () => {
 			setActiveMenu(true);
 		}
 	}, [screenSize]);
+	console.log(screenSize);
 
 	const handleActiveMenu = () => setActiveMenu(!activeMenu);
 
