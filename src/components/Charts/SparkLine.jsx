@@ -30,6 +30,7 @@ class SparkLine extends React.PureComponent {
 				xName="x"
 				yName="yval"
 				type={type}
+				style={{ marginLeft: '4px' }}
 			>
 				<Inject services={[SparklineTooltip]} />
 			</SparklineComponent>

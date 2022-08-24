@@ -32,7 +32,7 @@ const DropDown = ({ currentMode }) => (
 );
 
 const Ecommerce = () => {
-	const { currentColor, currentMode } = useStateContext();
+	const { currentColor, currentMode, screenSize } = useStateContext();
 
 	return (
 		<div className="mt-24">
@@ -86,17 +86,17 @@ const Ecommerce = () => {
 			</div>
 
 			<div className="flex gap-10 flex-wrap justify-center">
-				<div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg m-3 p-4 rounded-2xl md:w-780  ">
+				<div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg m-3 p-4 rounded-2xl w-11/12 md:w-780  ">
 					<div className="flex justify-between">
-						<p className="font-semibold text-xl">Revenue Updates</p>
-						<div className="flex items-center gap-4">
-							<p className="flex items-center gap-2 text-gray-600 hover:drop-shadow-xl">
+						<p className="font-semibold text-lg md:text-xl">Revenue Updates</p>
+						<div className="flex items-center gap-3 md:gap-4">
+							<p className="flex items-center gap-0 md:gap-2 text-gray-600 hover:drop-shadow-xl">
 								<span>
 									<GoPrimitiveDot />
 								</span>
 								<span>Expense</span>
 							</p>
-							<p className="flex items-center gap-2 text-green-400 hover:drop-shadow-xl">
+							<p className="flex items-center gap-0 md:gap-2 text-green-400 hover:drop-shadow-xl">
 								<span>
 									<GoPrimitiveDot />
 								</span>
@@ -108,17 +108,17 @@ const Ecommerce = () => {
 						<div className=" border-r-1 border-color m-4 pr-10">
 							<div>
 								<p>
-									<span className="text-3xl font-semibold">$93,438</span>
+									<span className="text-3xl ml-1 font-semibold">$93,438</span>
 									<span className="p-1.5 hover:drop-shadow-xl cursor-pointer rounded-full text-white bg-green-400 ml-3 text-xs">
 										23%
 									</span>
 								</p>
-								<p className="text-gray-500 mt-1">Budget</p>
+								<p className="text-gray-500 mt-1 ml-1">Budget</p>
 							</div>
 							<div className="mt-8">
-								<p className="text-3xl font-semibold">$48,487</p>
+								<p className="text-3xl ml-1 font-semibold">$48,487</p>
 
-								<p className="text-gray-500 mt-1">Expense</p>
+								<p className="text-gray-500 mt-1 ml-1">Expense</p>
 							</div>
 
 							<div className="mt-5">
@@ -130,6 +130,7 @@ const Ecommerce = () => {
 									width="250px"
 									data={SparklineAreaData}
 									color={currentColor}
+									style={{ marginLeft: '4px' }}
 								/>
 							</div>
 							<div className="mt-10">
@@ -163,15 +164,17 @@ const Ecommerce = () => {
 						</div>
 
 						<div className="mt-4">
-							<SparkLine
-								currentColor={currentColor}
-								id="column-sparkLine"
-								height="100px"
-								type="Column"
-								data={SparklineAreaData}
-								width="320"
-								color="rgb(242, 252, 253)"
-							/>
+							{screenSize > 375 && (
+								<SparkLine
+									currentColor={currentColor}
+									id="column-sparkLine"
+									height="100px"
+									type="Column"
+									data={SparklineAreaData}
+									width="320"
+									color="rgb(242, 252, 253)"
+								/>
+							)}
 						</div>
 					</div>
 
@@ -181,19 +184,19 @@ const Ecommerce = () => {
 							<p className="text-gray-400">Yearly sales</p>
 						</div>
 
-						<div className="w-40">
+						<div className="w-full md:w-40">
 							<Pie
 								id="pie-chart"
 								data={ecomPieChartData}
 								legendVisiblity={false}
-								height="160px"
+								height="170px"
 							/>
 						</div>
 					</div>
 				</div>
 			</div>
 
-			<div className="flex gap-10 m-4 flex-wrap justify-center">
+			<div className="flex gap-10 w-10/12  m-4 flex-wrap justify-center">
 				<div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg p-6 rounded-2xl">
 					<div className="flex justify-between items-center gap-2">
 						<p className="text-xl font-semibold">Recent Transactions</p>
@@ -235,7 +238,7 @@ const Ecommerce = () => {
 						<p className="text-gray-400 text-sm">36 Recent Transactions</p>
 					</div>
 				</div>
-				<div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg p-6 rounded-2xl w-96 md:w-760">
+				<div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg p-6 rounded-2xl w-screen md:w-760">
 					<div className="flex justify-between items-center gap-2 mb-10">
 						<p className="text-xl font-semibold">Sales Overview</p>
 						<DropDown currentMode={currentMode} />
@@ -247,7 +250,7 @@ const Ecommerce = () => {
 			</div>
 
 			<div className="flex flex-wrap justify-center">
-				<div className="md:w-400 bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl p-6 m-3">
+				<div className="md:w-400 w-11/12 bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl p-6 m-3">
 					<div className="flex justify-between">
 						<p className="text-xl font-semibold">Weekly Stats</p>
 						<button
@@ -282,15 +285,17 @@ const Ecommerce = () => {
 							</div>
 						))}
 						<div className="mt-4">
-							<SparkLine
-								currentColor={currentColor}
-								id="area-sparkLine"
-								height="160px"
-								type="Area"
-								data={SparklineAreaData}
-								width="320"
-								color="rgb(242, 252, 253)"
-							/>
+							{screenSize > 375 && (
+								<SparkLine
+									currentColor={currentColor}
+									id="area-sparkLine"
+									height="160px"
+									type="Area"
+									data={SparklineAreaData}
+									width="320"
+									color="rgb(242, 252, 253)"
+								/>
+							)}
 						</div>
 					</div>
 				</div>
